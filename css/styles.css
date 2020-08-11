@@ -72,22 +72,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(https://i.imgur.com/QqZQ3IC.png);
   background-size: cover;
   cursor: pointer;
+}
+
+.circle-user {
+  background-image: url(https://i.imgur.com/QqZQ3IC.png);
   animation: rotate 30s linear infinite;
 }
 
-.circle-close {
-  height: 300px;
-  width: 300px;
-  border-radius: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.circle-pc {
   background-image: url(https://i.imgur.com/Kz6ElBt.png);
-  background-size: cover;
-  cursor: pointer;
   animation: rotate 10s linear infinite;
 }
 

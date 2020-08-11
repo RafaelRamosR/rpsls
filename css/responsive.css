@@ -1,0 +1,79 @@
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 575px) {
+  .col-three {
+    justify-content: space-between;
+  }
+  .circle {
+    height: 130px;
+    width: 130px;
+  }
+  .emoji {
+    font-size: 50px;
+  }
+  .live {
+    font-size: 1.8em;
+  padding: 0;
+  }
+  .vs {
+    font-size: 2em;
+  }
+  .col-btn {
+    grid-template-columns: 1fr;
+    grid-auto-flow: row dense;
+    grid-gap: 20px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .circle {
+    height: 200px;
+    width: 200px;
+  }
+  .emoji {
+    font-size: 80px;
+  }
+  .live {
+    font-size: 2em;
+  }
+  .vs {
+    font-size: 3em;
+  }
+  .col-btn {
+    grid-template-columns: repeat(auto-fit, minmax(3em, 200px));
+    grid-auto-flow: row dense;
+    grid-gap: 20px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 800px) {
+  .circle {
+    height: 250px;
+    width: 250px;
+  }
+  .emoji {
+    font-size: 100px;
+  }
+  .live {
+    font-size: 2em;
+  }
+  .vs {
+    font-size: 4em;
+  }
+  .col-btn {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
+    grid-auto-flow: row dense;
+    grid-gap: 20px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /*  */
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /*  */
+}
