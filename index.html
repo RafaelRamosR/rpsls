@@ -8,32 +8,38 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
   <title>Rock - Paper - Scissors - Lizard - Spock</title>
 </head>
 
 <body>
   <main class="container">
     <h1 class="title">Rock • Paper • Scissors • Lizard • Spock</h1>
+    <!-- INFO BATTLE -->
     <article class="col col-two">
       <div class="live">💖💖🖤</div>
       <div class="live">🖤🖤💖</div>
     </article>
+    <!-- VS -->
     <article class="col col-three">
       <div class="user flex">
         <div class="circle circle-user"></div>
-        <div class="emoji">🖐</div>
+        <div class="emoji emoji-user"></div>
       </div>
-      <div class="vs">🆚</div>
+      <div class="vs">
+        <button id="play" class="btn-emoji">PLAY</button>
+      </div>
       <div class="computer flex">
         <div class="circle circle-pc"></div>
-        <div class="emoji">🦎</div>
+        <div class="emoji emoji-pc"></div>
       </div>
     </article>
-    <article class="col col-three">
+    <!-- BUTTONS -->
+    <article class="col col-btn">
       <button class="btn-emoji">ROCK ✊</button>
       <button class="btn-emoji">PAPER ✋</button>
       <button class="btn-emoji">SCISSORS ✌</button>
-      <button class="btn-emoji">LIZARD 🦎</button>
+      <button class="btn-emoji">LIZARD 👌</button>
       <button class="btn-emoji">SPOCK 🖖</button>
     </article>
   </main>

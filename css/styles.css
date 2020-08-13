@@ -1,5 +1,11 @@
+:root {
+  --emoji-count: "";
+  --emoji-game: "";
+  --font-main: "Sriracha";
+}
 
 .container {
+  font-family: var(--font-main), cursive;
   width: 100%;
   display: grid;
 }
@@ -14,7 +20,7 @@
   width: 80%;
   display: grid;
   justify-self: center;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   grid-auto-flow: column;
   padding-bottom: 2em;
@@ -22,11 +28,11 @@
 }
 
 .col-two {
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 .col-three {
-  justify-content: space-around; 
+  justify-content: space-around;
 }
 
 .title {
@@ -40,6 +46,15 @@
 
 .vs {
   font-size: 5em;
+  animation: fadeIn ease 1s;
+}
+
+.vs::before {
+  content: var(--emoji-count);
+}
+
+.emoji-user::before, .emoji-pc::before {
+  content: var(--emoji-game);
 }
 
 .btn-emoji {
@@ -54,8 +69,9 @@
   user-select: none;
   background: linear-gradient(to right, #7f00ff, #e100ff);
 }
+
 .btn-emoji:active {
-  box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .emoji {
@@ -86,11 +102,24 @@
   animation: rotate 10s linear infinite;
 }
 
+.none {
+  display: none;
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(-360deg);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
