@@ -2,6 +2,8 @@
   --emoji-count: "";
   --emoji-game: "";
   --font-main: "Sriracha";
+  --img-red: url(../img/red.svg);
+  --img-green: url(../img/green.svg);
 }
 
 .container {
@@ -74,6 +76,11 @@
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
+.btn-emoji:disabled {
+  cursor: not-allowed;
+  background: linear-gradient(to right, #666666, #bfbfbf);
+}
+
 .emoji {
   position: absolute;
   transform-origin: center;
@@ -93,12 +100,12 @@
 }
 
 .circle-user {
-  background-image: url(https://i.imgur.com/QqZQ3IC.png);
+  background-image: var(--img-green);
   animation: rotate 30s linear infinite;
 }
 
 .circle-pc {
-  background-image: url(https://i.imgur.com/Kz6ElBt.png);
+  background-image: var(--img-red);
   animation: rotate 10s linear infinite;
 }
 
