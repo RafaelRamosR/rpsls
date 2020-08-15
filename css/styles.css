@@ -1,6 +1,7 @@
 :root {
   --emoji-count: "";
-  --emoji-game: "";
+  --emoji-user: "";
+  --emoji-computer: "";
   --font-main: "Sriracha";
   --img-red: url(../img/red.svg);
   --img-green: url(../img/green.svg);
@@ -41,7 +42,7 @@
   text-align: center;
 }
 
-.live {
+.user-live, .computer-live {
   font-size: 2.5em;
   padding: 0 1em;
 }
@@ -51,12 +52,16 @@
   animation: fadeIn ease 1s;
 }
 
-.vs::before {
+.vs::after {
   content: var(--emoji-count);
 }
 
-.emoji-user::before, .emoji-pc::before {
-  content: var(--emoji-game);
+.emoji-user::after {
+  content: var(--emoji-user);
+}
+
+.emoji-computer::after {
+  content: var(--emoji-computer);
 }
 
 .btn-emoji {
@@ -104,7 +109,7 @@
   animation: rotate 30s linear infinite;
 }
 
-.circle-pc {
+.circle-computer {
   background-image: var(--img-red);
   animation: rotate 10s linear infinite;
 }
