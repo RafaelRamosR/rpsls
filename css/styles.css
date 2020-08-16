@@ -2,6 +2,8 @@
   --emoji-count: "";
   --emoji-user: "";
   --emoji-computer: "";
+  --lives-user: "💖💖💖";
+  --lives-computer: "💖💖💖";
   --font-main: "Sriracha";
   --img-red: url(../img/red.svg);
   --img-green: url(../img/green.svg);
@@ -45,6 +47,14 @@
 .user-live, .computer-live {
   font-size: 2.5em;
   padding: 0 1em;
+}
+
+.user-live::after {
+  content: var(--lives-user);
+}
+
+.computer-live::after {
+  content: var(--lives-computer);
 }
 
 .vs {

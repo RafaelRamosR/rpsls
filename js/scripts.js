@@ -3,7 +3,16 @@ const btnPlay = document.getElementById('play');
 const btnEmoji = document.getElementById('btnEmoji');
 const arrCountdown = ['🆚', '1️⃣', '2️⃣', '3️⃣'];
 const arrEmojis = ['✊', '✋', '✌', '👌', '🖖'];
+const arrLives = ['🖤🖤🖤', '🖤🖤💖', '🖤💖💖'];
 let emojiUser = '';
+
+const setItem = (key, item) => {
+  return localStorage.setItem(key, item);
+}
+
+const getItem = (key) => {
+  return parseInt(localStorage.getItem(key));
+}
 
 /*
   Generate random number
@@ -28,31 +37,47 @@ const countdown = () => {
     }
   }, 1000);
 };
+/*
+  Modify the lives of the players according to the outcome of the game
+  TRUE: 0 lives - FALSE: Tie
+*/
+const livesPlayer = (result) => {
+  switch (result) {
+    case 'win':
+      setItem('computer-live', getItem('computer-live') - 1);
+      root.style.setProperty('--lives-computer', `"${arrLives[getItem('computer-live')]}"`);
+      break;
+    case 'lost':
+      setItem('user-live', getItem('user-live') - 1);
+      root.style.setProperty('--lives-user', `"${arrLives[getItem('user-live')]}"`);
+      break;
+    default:
+      return false;
+  }
+
+  if (getItem('user-live') === 0 || getItem('computer-live') === 0) {
+    return true;
+  }
+}
 
 /*
   The number of lives of the player is altered and the number of rounds is increased
   until a player has no life or the rounds reach 5
 */
 const newRound = (result) => {
-  const userLive = localStorage.getItem('user-live');
-  const liveComputer = localStorage.getItem('computer-live');
-  const round = localStorage.getItem('round');
-  switch (result) {
-    case 'win':
-      localStorage.setItem('computer-live', liveComputer - 1);
-      break;
-    case 'lost':
-      localStorage.setItem('user-live', userLive - 1);
-      break;
-  }
-  localStorage.setItem('round', parseInt(round) + 1);
-  console.log(`Round ${round}`);
-  console.log(`You ${result}`);
-  if (round == 5 || userLive == 0 || liveComputer == 0) {
-    console.log('GAME OVER');
-    const win = userLive > liveComputer ? 'WIN' : 'LOST'
+  const userLive = livesPlayer(result);
+  const round = getItem('round') + 1;
+
+  if (round > 5 || userLive === true) {
+    const win = userLive === false ? 'WIN' : 'LOST'
     return console.log(`YOU ${win}`);
   }
+
+  root.style.setProperty('--img-green', `url(../img/green-round${round}.png)`);
+  root.style.setProperty('--img-red', `url(../img/red-round${round}.png)`);
+  setItem('round', round);
+  console.log(`You ${result}`);
+
   return countdown();
 }
 
@@ -102,9 +127,11 @@ const playGame = () => {
 /* Starts the countdown */
 btnPlay.addEventListener('click', () => {
   btnPlay.classList.add('none');
-  localStorage.setItem('round', 1);
-  localStorage.setItem('user-live', 3);
-  localStorage.setItem('computer-live', 3);
+  root.style.setProperty('--img-green', `url(../img/green-round1.png)`);
+  root.style.setProperty('--img-red', `url(../img/red-round1.png)`);
+  setItem('round', 1);
+  setItem('user-live', 3);
+  setItem('computer-live', 3);
   countdown();
 });
 
