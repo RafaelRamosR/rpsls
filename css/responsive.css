@@ -1,8 +1,5 @@
 /* Small devices (landscape phones, 576px and up) */
 @media (max-width: 575px) {
-  .col-three {
-    justify-content: space-between;
-  }
   .circle {
     height: 130px;
     width: 130px;
@@ -10,7 +7,7 @@
   .emoji {
     font-size: 50px;
   }
-  .live {
+  .user-live, .computer-live {
     font-size: 1.8em;
   padding: 0;
   }
@@ -33,7 +30,7 @@
   .emoji {
     font-size: 80px;
   }
-  .live {
+  .user-live, .computer-live {
     font-size: 2em;
   }
   .vs {

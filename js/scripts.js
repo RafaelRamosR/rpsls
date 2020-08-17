@@ -110,11 +110,10 @@ const playGame = () => {
   const emojiComputer = arrEmojis[numRandom(0, 5)];
   root.style.setProperty('--emoji-computer', `"${emojiComputer}"`);
 
-  if (emojiUser === emojiComputer) {
-    return newRound('tied');
-  }
-
   switch (emojiUser) {
+    case emojiComputer: {
+      return newRound('tied');
+    }
     case '✊': {
       arrGame.push('✌', '👌');
       break;

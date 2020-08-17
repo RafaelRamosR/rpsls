@@ -9,6 +9,14 @@
   --img-green: url(../img/green.svg);
 }
 
+body {
+  background-color: #ee5522;
+  background-image: url(../img/suntornado.svg);
+  /* background by SVGBackgrounds.com */
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 .container {
   font-family: var(--font-main), cursive;
   width: 100%;
@@ -29,7 +37,6 @@
   align-items: center;
   grid-auto-flow: column;
   padding-bottom: 2em;
-  background: beige;
 }
 
 .col-two {
@@ -133,6 +140,7 @@
 }
 
 /* Modal */
+
 .modal {
   position: fixed;
   top: 0;
