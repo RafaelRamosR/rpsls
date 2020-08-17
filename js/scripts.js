@@ -1,6 +1,8 @@
 const root = document.documentElement;
 const btnPlay = document.getElementById('play');
 const btnEmoji = document.getElementById('btnEmoji');
+const modal = document.getElementById('modal');
+const titleResult = document.getElementById('titleResult');
 const arrCountdown = ['🆚', '1️⃣', '2️⃣', '3️⃣'];
 const arrEmojis = ['✊', '✋', '✌', '👌', '🖖'];
 const arrLives = ['🖤🖤🖤', '🖤🖤💖', '🖤💖💖'];
@@ -14,6 +16,15 @@ const getItem = (key) => {
   return parseInt(localStorage.getItem(key));
 }
 
+// Reset localstorage and CSS variables
+const restart = () => {
+  root.style = '';
+  btnPlay.classList.toggle('none');
+  setItem('round', 1);
+  setItem('user-live', 3);
+  setItem('computer-live', 3);
+}
+
 /*
   Generate random number
   Minimum included, maximum excluded
@@ -23,9 +34,7 @@ const numRandom = (min, max) => {
   return num;
 }
 
-/*
-  Countdown to cycle through arrCountdown and display it on screen
-*/
+// Countdown to cycle through arrCountdown and display it on screen
 const countdown = () => {
   let index = arrCountdown.length - 1;
   const timeInterval = setInterval(() => {
@@ -36,7 +45,8 @@ const countdown = () => {
       return clearInterval(timeInterval);
     }
   }, 1000);
-};
+}
+
 /*
   Modify the lives of the players according to the outcome of the game
   TRUE: 0 lives - FALSE: Tie
@@ -65,18 +75,27 @@ const livesPlayer = (result) => {
   until a player has no life or the rounds reach 5
 */
 const newRound = (result) => {
-  const userLive = livesPlayer(result);
+  const lives = livesPlayer(result);
+  const userLive = getItem('user-live');
+  const computerLive = getItem('computer-live');
   const round = getItem('round') + 1;
 
-  if (round > 5 || userLive === true) {
-    const win = userLive === false ? 'WIN' : 'LOST'
-    return console.log(`YOU ${win}`);
+  if (round > 5 || lives === true) {
+    let result = '';
+    if (userLive > computerLive) {
+      result = 'WIN';
+    } else if (userLive < computerLive) {
+      result = 'LOST';
+    } else {
+      result = 'TIED';
+    }
+    modal.classList.add('modal-show');
+    return titleResult.innerText = `YOU ${result}`;
   }
 
   root.style.setProperty('--img-green', `url(../img/green-round${round}.png)`);
   root.style.setProperty('--img-red', `url(../img/red-round${round}.png)`);
   setItem('round', round);
-  console.log(`You ${result}`);
 
   return countdown();
 }
@@ -124,20 +143,15 @@ const playGame = () => {
   return newRound(result);
 }
 
-/* Starts the countdown */
+// Starts the countdown
 btnPlay.addEventListener('click', () => {
-  btnPlay.classList.add('none');
+  restart();
   root.style.setProperty('--img-green', `url(../img/green-round1.png)`);
   root.style.setProperty('--img-red', `url(../img/red-round1.png)`);
-  setItem('round', 1);
-  setItem('user-live', 3);
-  setItem('computer-live', 3);
   countdown();
 });
 
-/*
-  Here the game begins
-*/
+// Here the game begins
 btnEmoji.addEventListener('click', (e) => {
   const btn = e.target.dataset;
 
@@ -146,3 +160,11 @@ btnEmoji.addEventListener('click', (e) => {
     root.style.setProperty('--emoji-user', `"${emojiUser}"`);
   }
 });
+
+/* Modal */
+modal.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal')) {
+      modal.classList.remove('modal-show');
+      restart();
+    }
+})
