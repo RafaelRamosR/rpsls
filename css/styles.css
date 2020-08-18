@@ -1,16 +1,26 @@
 :root {
+  /* Fonts */
+  --font-main: "Sriracha";
+  /* SVG */
+  --img-user: url(../img/user.svg);
+  --img-computer: url(../img/computer.svg);
+  /* Emojis */
   --emoji-count: "";
   --emoji-user: "";
   --emoji-computer: "";
   --lives-user: "💖💖💖";
   --lives-computer: "💖💖💖";
-  --font-main: "Sriracha";
-  --img-red: url(../img/red.svg);
-  --img-green: url(../img/green.svg);
+  /* Colors */
+  --main-color: #FE4E00;
+  --text-color: wheat;
+  --btn-main-color: #8C5383;
+  --btn-second-color: #4A5899;
+  --disabled-main-color: #666;
+  --disabled-second-color: #bfbfbf;
 }
 
 body {
-  background-color: #ee5522;
+  background-color: var(--main-color);
   background-image: url(../img/suntornado.svg);
   /* background by SVGBackgrounds.com */
   background-attachment: fixed;
@@ -49,6 +59,7 @@ body {
 
 .title {
   text-align: center;
+  color: var(--text-color);
 }
 
 .emoji-user, .user-live {
@@ -60,14 +71,6 @@ body {
   padding: 0 1em;
 }
 
-.user-live::after {
-  content: var(--lives-user);
-}
-
-.computer-live::after {
-  content: var(--lives-computer);
-}
-
 .vs {
   font-size: 5em;
   animation: fadeIn ease 1s;
@@ -75,6 +78,14 @@ body {
 
 .vs::after {
   content: var(--emoji-count);
+}
+
+.user-live::after {
+  content: var(--lives-user);
+}
+
+.computer-live::after {
+  content: var(--lives-computer);
 }
 
 .emoji-user::after {
@@ -89,13 +100,13 @@ body {
   padding: 0.75em 1.75em;
   border-radius: 50px;
   font-size: 16px;
-  color: #fff;
+  color: var(--text-color);
   position: relative;
   cursor: pointer;
   outline: none;
   border: none;
   user-select: none;
-  background: linear-gradient(to right, #7f00ff, #e100ff);
+  background: linear-gradient(to right, var(--btn-main-color), var(--btn-second-color));
 }
 
 .btn-emoji:active {
@@ -104,7 +115,7 @@ body {
 
 .btn-emoji:disabled {
   cursor: not-allowed;
-  background: linear-gradient(to right, #666666, #bfbfbf);
+  background: linear-gradient(to right, var(--disabled-main-color), var(--disabled-second-color));
 }
 
 .emoji {
@@ -126,12 +137,12 @@ body {
 }
 
 .circle-user {
-  background-image: var(--img-green);
+  background-image: var(--img-user);
   animation: rotate 30s linear infinite;
 }
 
 .circle-computer {
-  background-image: var(--img-red);
+  background-image: var(--img-computer);
   animation: rotate 10s linear infinite;
 }
 
@@ -158,7 +169,7 @@ body {
   height: 25vh;
   padding: 1rem;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: var(--main-color);
 }
 
 .modal-show {

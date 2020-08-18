@@ -93,8 +93,8 @@ const newRound = (result) => {
     return titleResult.innerText = `YOU ${result}`;
   }
 
-  root.style.setProperty('--img-green', `url(../img/green-round${round}.png)`);
-  root.style.setProperty('--img-red', `url(../img/red-round${round}.png)`);
+  root.style.setProperty('--img-user', `url(../img/user-round${round}.svg)`);
+  root.style.setProperty('--img-computer', `url(../img/computer-round${round}.svg)`);
   setItem('round', round);
 
   return countdown();
@@ -145,8 +145,8 @@ const playGame = () => {
 // Starts the countdown
 btnPlay.addEventListener('click', () => {
   restart();
-  root.style.setProperty('--img-green', `url(../img/green-round1.png)`);
-  root.style.setProperty('--img-red', `url(../img/red-round1.png)`);
+  root.style.setProperty('--img-user', `url(../img/user-round1.svg)`);
+  root.style.setProperty('--img-computer', `url(../img/computer-round1.svg)`);
   countdown();
 });
 
