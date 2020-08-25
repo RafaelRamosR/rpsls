@@ -17,12 +17,16 @@ const getItem = (key) => {
 }
 
 // Reset localstorage and CSS variables
-const restart = () => {
+const restart = (disable) => {
   root.style = '';
   btnPlay.classList.toggle('none');
   setItem('round', 1);
   setItem('user-live', 3);
   setItem('computer-live', 3);
+  // Disable buttons alternately
+  for (const key in btnEmoji.children) {
+    btnEmoji.children[key].disabled = disable;
+  }
 }
 
 /*
@@ -144,7 +148,7 @@ const playGame = () => {
 
 // Starts the countdown
 btnPlay.addEventListener('click', () => {
-  restart();
+  restart(false);
   root.style.setProperty('--img-user', `url(../img/user-round1.svg)`);
   root.style.setProperty('--img-computer', `url(../img/computer-round1.svg)`);
   countdown();
@@ -164,6 +168,6 @@ btnEmoji.addEventListener('click', (e) => {
 modal.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal')) {
       modal.classList.remove('modal-show');
-      restart();
+      restart(true);
     }
 })
