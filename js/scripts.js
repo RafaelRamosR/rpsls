@@ -18,6 +18,7 @@ const getItem = (key) => {
 
 // Reset localstorage and CSS variables
 const restart = (disable) => {
+  emojiUser = '';
   root.style = '';
   btnPlay.classList.toggle('none');
   setItem('round', 1);

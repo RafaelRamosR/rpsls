@@ -134,16 +134,15 @@ body {
   align-items: center;
   background-size: cover;
   cursor: pointer;
+  animation: rotate 20s linear infinite;
 }
 
 .circle-user {
   background-image: var(--img-user);
-  animation: rotate 30s linear infinite;
 }
 
 .circle-computer {
   background-image: var(--img-computer);
-  animation: rotate 10s linear infinite;
 }
 
 .none {
