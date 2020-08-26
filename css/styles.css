@@ -1,6 +1,8 @@
 :root {
   /* Fonts */
   --font-main: "Sriracha";
+  --modal-width: 25vw;
+  --modal-height: 25vh;
   /* SVG */
   --img-user: url(../img/user.svg);
   --img-computer: url(../img/computer.svg);
@@ -164,8 +166,8 @@ body {
 
 .modal-content {
   font-family: var(--font-main), cursive;
-  width: 25vw;
-  height: 25vh;
+  width: var(--modal-width);
+  height: var(--modal-height);
   padding: 1rem;
   border-radius: 10px;
   background-color: var(--main-color);

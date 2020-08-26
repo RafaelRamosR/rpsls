@@ -2,6 +2,8 @@ const root = document.documentElement;
 const btnPlay = document.getElementById('play');
 const btnEmoji = document.getElementById('btnEmoji');
 const modal = document.getElementById('modal');
+const modalInfo = document.getElementById('info');
+const btnInfo = document.getElementById('btn-info');
 const titleResult = document.getElementById('titleResult');
 const arrCountdown = ['🆚', '1️⃣', '2️⃣', '3️⃣'];
 const arrEmojis = ['✊', '✋', '✌', '👌', '🖖'];
@@ -166,9 +168,22 @@ btnEmoji.addEventListener('click', (e) => {
 });
 
 /* Modal */
+const modalClose = (target, id) => {
+  if (target.classList.contains('modal')) {
+    id.classList.remove('modal-show');
+    return true;
+  }
+  return false;
+}
+
+btnInfo.addEventListener('click', () => modalInfo.classList.add('modal-show'));
+
 modal.addEventListener('click', (e) => {
-    if (e.target.classList.contains('modal')) {
-      modal.classList.remove('modal-show');
+    if (modalClose(e.target, modal)) {
       restart(true);
     }
-})
+});
+
+modalInfo.addEventListener('click', (e) => {
+  modalClose(e.target, modalInfo);
+});

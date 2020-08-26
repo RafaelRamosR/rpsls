@@ -1,0 +1,83 @@
+.controls {
+  display: grid;
+  position: absolute;
+  width: var(--modal-width);
+  height: var(--modal-height);
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+}
+
+.btn-info {
+	position: absolute;
+	width: 30px;
+	top: 2%;
+	right: 2%;
+	font-size: 1.2em;
+	text-align: center;
+	color: var(--text-color);
+	border-radius: 50%;
+	border: none;
+	outline: none;
+	background: linear-gradient(147deg, var(--btn-main-color) 0%, var(--btn-second-color) 74%);
+}
+
+.title-info {
+  margin: 0;
+  font-size: 1.3em;
+  color: white;
+}
+
+.text-info {
+  margin: 0;
+  color: var(--text-color);
+}
+
+.tap{
+  display: inline-flex;
+  position: relative;
+  height: 10px;
+  width: 50px;
+  bottom: 1em;
+  margin: 0 3px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+  background: #d9d9d9;
+  justify-self: center;
+}
+
+.tap:before{
+  content: '';
+  height: 100%;
+  width: -100%;
+  background: linear-gradient(147deg, var(--btn-main-color) 0%, var(--btn-second-color) 74%);
+  border-radius: 10px;
+  transform: scaleX(0);
+  transition: transform .6s;
+  transform-origin: left;
+}
+
+.tap-input {
+  display: none;
+}
+
+.info1, .info2, .info3 {
+  opacity: 0;
+  position: absolute;
+}
+
+.tap-1:checked ~ .info1,
+.tap-2:checked ~ .info2,
+.tap-3:checked ~ .info3{
+  opacity: 1;
+  margin-left: 0px;
+  transition-delay: .3s;
+  transition: transform .3s;
+}
+
+.tap-1:checked ~ .tap-1:before,
+.tap-2:checked ~ .tap-2:before,
+.tap-3:checked ~ .tap-3:before{
+  transform: scaleX(1);
+  width: 100%;
+}

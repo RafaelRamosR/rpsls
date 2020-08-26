@@ -1,5 +1,14 @@
 /* Small devices (landscape phones, 576px and up) */
+@media (max-height: 450px) {
+  :root {
+    --modal-height: 30vw;
+  }
+}
+
 @media (max-width: 575px) {
+  :root {
+    --modal-width: 70vw;
+  }
   .circle {
     height: 130px;
     width: 130px;
@@ -23,6 +32,9 @@
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+  :root {
+    --modal-width: 60vw;
+  }
   .circle {
     height: 200px;
     width: 200px;
@@ -45,6 +57,9 @@
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 800px) {
+  :root {
+    --modal-width: 40vw;
+  }
   .circle {
     height: 250px;
     width: 250px;
@@ -67,10 +82,14 @@
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  /*  */
+  :root {
+    --modal-width: 50vw;
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-  /*  */
+@media (min-width: 1260px) {
+  :root {
+    --modal-width: 25vw;
+  }
 }
