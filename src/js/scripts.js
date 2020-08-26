@@ -10,13 +10,9 @@ const arrEmojis = ['✊', '✋', '✌', '👌', '🖖'];
 const arrLives = ['🖤🖤🖤', '🖤🖤💖', '🖤💖💖'];
 let emojiUser = '';
 
-const setItem = (key, item) => {
-  return localStorage.setItem(key, item);
-}
+const setItem = (key, item) => localStorage.setItem(key, item);
 
-const getItem = (key) => {
-  return parseInt(localStorage.getItem(key));
-}
+const getItem = (key) => parseInt(localStorage.getItem(key), 10);
 
 // Reset localstorage and CSS variables
 const restart = (disable) => {
@@ -27,10 +23,10 @@ const restart = (disable) => {
   setItem('user-live', 3);
   setItem('computer-live', 3);
   // Disable buttons alternately
-  for (const key in btnEmoji.children) {
-    btnEmoji.children[key].disabled = disable;
+  for (let i = 0; i < btnEmoji.children.length; i += 1) {
+    btnEmoji.children[i].disabled = disable;
   }
-}
+};
 
 /*
   Generate random number
@@ -39,7 +35,7 @@ const restart = (disable) => {
 const numRandom = (min, max) => {
   const num = Math.floor(Math.random() * (max - min)) + min;
   return num;
-}
+};
 
 // Countdown to cycle through arrCountdown and display it on screen
 const countdown = () => {
@@ -49,10 +45,10 @@ const countdown = () => {
     index -= 1;
     if (index < 0) {
       playGame();
-      return clearInterval(timeInterval);
+      clearInterval(timeInterval);
     }
   }, 1000);
-}
+};
 
 /*
   Modify the lives of the players according to the outcome of the game
@@ -75,7 +71,9 @@ const livesPlayer = (result) => {
   if (getItem('user-live') === 0 || getItem('computer-live') === 0) {
     return true;
   }
-}
+
+  return false;
+};
 
 /*
   The number of lives of the player is altered and the number of rounds is increased
@@ -97,7 +95,8 @@ const newRound = (result) => {
       result = 'TIED';
     }
     modal.classList.add('modal-show');
-    return titleResult.innerText = `YOU ${result}`;
+    titleResult.innerText = `YOU ${result}`;
+    return true;
   }
 
   root.style.setProperty('--img-user', `url(../img/user-round${round}.svg)`);
@@ -105,7 +104,7 @@ const newRound = (result) => {
   setItem('round', round);
 
   return countdown();
-}
+};
 
 /*
   Determine Game Winner
@@ -147,13 +146,13 @@ const playGame = () => {
   }
   const result = arrGame.includes(emojiComputer) === true ? 'win' : 'lost';
   return newRound(result);
-}
+};
 
 // Starts the countdown
 btnPlay.addEventListener('click', () => {
   restart(false);
-  root.style.setProperty('--img-user', `url(../img/user-round1.svg)`);
-  root.style.setProperty('--img-computer', `url(../img/computer-round1.svg)`);
+  root.style.setProperty('--img-user', 'url(../img/user-round1.svg)');
+  root.style.setProperty('--img-computer', 'url(../img/computer-round1.svg)');
   countdown();
 });
 
@@ -174,14 +173,12 @@ const modalClose = (target, id) => {
     return true;
   }
   return false;
-}
+};
 
 btnInfo.addEventListener('click', () => modalInfo.classList.add('modal-show'));
 
 modal.addEventListener('click', (e) => {
-    if (modalClose(e.target, modal)) {
-      restart(true);
-    }
+  if (modalClose(e.target, modal)) { restart(true); }
 });
 
 modalInfo.addEventListener('click', (e) => {
